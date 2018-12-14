@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="hu"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ShipEntity.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">spaceinvaders-app</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">ShipEntity.java</span></div><h1>ShipEntity.java</h1><pre class="source lang-java linenums">
+
+/**
+ * The entity that represents the players ship
+ * 
+ * @author Kevin Glass
+ */
+public class ShipEntity extends Entity {
+	/** The game in which the ship exists */
+	private Game game;
+	
+	/**
+	 * Create a new entity to represent the players ship
+	 *  
+	 * @param game The game in which the ship is being created
+	 * @param ref The reference to the sprite to show for the ship
+	 * @param x The initial x location of the player's ship
+	 * @param y The initial y location of the player's ship
+	 */
+	public ShipEntity(Game game,String ref,int x,int y) {
+<span class="nc" id="L21">		super(ref,x,y);</span>
+		
+<span class="nc" id="L23">		this.game = game;</span>
+<span class="nc" id="L24">	}</span>
+	
+	/**
+	 * Request that the ship move itself based on an elapsed ammount of
+	 * time
+	 * 
+	 * @param delta The time that has elapsed since last move (ms)
+	 */
+	public void move(long delta) {
+		// if we're moving left and have reached the left hand side
+		// of the screen, don't move
+<span class="nc bnc" id="L35" title="All 4 branches missed.">		if ((dx &lt; 0) &amp;&amp; (x &lt; 10)) {</span>
+<span class="nc" id="L36">			return;</span>
+		}
+		// if we're moving right and have reached the right hand side
+		// of the screen, don't move
+<span class="nc bnc" id="L40" title="All 4 branches missed.">		if ((dx &gt; 0) &amp;&amp; (x &gt; 750)) {</span>
+<span class="nc" id="L41">			return;</span>
+		}
+		
+<span class="nc" id="L44">		super.move(delta);</span>
+<span class="nc" id="L45">	}</span>
+	
+	/**
+	 * Notification that the player's ship has collided with something
+	 * 
+	 * @param other The entity with which the ship has collided
+	 */
+	public void collidedWith(Entity other) {
+		// if its an alien, notify the game that the player
+		// is dead
+<span class="nc bnc" id="L55" title="All 2 branches missed.">		if (other instanceof AlienEntity) {</span>
+<span class="nc" id="L56">			game.notifyDeath();</span>
+		}
+<span class="nc" id="L58">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
