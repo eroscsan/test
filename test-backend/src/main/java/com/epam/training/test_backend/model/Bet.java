@@ -1,42 +1,26 @@
 package com.epam.training.test_backend.model;
 
-import java.util.Date;
-
 import com.epam.training.test_backend.framework.CreateJSONBody;
 
 public class Bet extends CreateJSONBody{
 	
 	// here comes the bet model
 	private Integer id;
-	private String title;
+	private String description;
 	private String type;
-	private Date start;
-	private Date end;
 	
 	
-	public Date getStart() {
-		return start;
-	}
-	public void setStart(Date start) {
-		this.start = start;
-	}
-	public Date getEnd() {
-		return end;
-	}
-	public void setEnd(Date end) {
-		this.end = end;
-	}
 	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getTitle() {
-		return title;
+	public String getDescription() {
+		return description;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public String getType() {
 		return type;
@@ -44,26 +28,33 @@ public class Bet extends CreateJSONBody{
 	public void setType(String type) {
 		this.type = type;
 	}
+	
 	private Bet() {
 		
+	}
+	
+	@Override
+	public String toString() {
+		return "id" + Integer.toString(id);
 	}
 	
 	public static class Builder{
 		
 		private Integer id;
-		private String title;
+		private String description;
 		private String type;
-		private Date start;
-		private Date end;
-		
-		
-		public Builder withID(Integer id) {
+/*		
+		public Builder(int id) {
+			this.id = id;
+		}
+*/		
+		public Builder withId(Integer id) {
 			this.id = id;
 			return this;
 		}
 
-		public Builder withTitle(String title) {
-			this.title = title;
+		public Builder withDescription(String description) {
+			this.description = description;
 			return this;
 		}
 
@@ -71,43 +62,16 @@ public class Bet extends CreateJSONBody{
 			this.type = type;
 			return this;
 		}
-
-		public Builder withStart(Date start) {
-			this.start = start;
-			return this;
-		}
-
-		public Builder withEnd(Date end) {
-			this.end = end;
-			return this;
-		}
-
+		
 		public Bet build() {
 			Bet request = new Bet();
 			request.id = this.id;
-			request.title = this.title;
+			request.description = this.description;
 			request.type = this.type;
-			request.start = this.start;
-			request.end = this.end;
 			
 			return request;
+			
 		}
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
-	
+		
 }

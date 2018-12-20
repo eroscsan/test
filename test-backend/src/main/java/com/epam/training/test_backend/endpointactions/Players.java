@@ -42,9 +42,8 @@ public class Players {
 	}
 	
 	public static Response getPlayerUpdate(Player request) {
-		logger.info("POST {} {}", UPDATE_PLAYER_ENDPOINT, request.createJSONBodyWithNulls());
+		logger.info("POST {} {}", UPDATE_PLAYER_ENDPOINT, request);
 		return given().contentType(ContentType.JSON)
-				.body(request)
 				.post(UPDATE_PLAYER_ENDPOINT)
 				.then()
 				.statusCode(302)
