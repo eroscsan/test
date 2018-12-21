@@ -77,7 +77,6 @@ public class SportsBettingBackEndTest extends BasicTest {
 		String id = eventResponse.jsonPath().getString(ID);
 		Response betResponse = Events.getBetsByEventId(id, sessionId);
 		System.out.println(betResponse.asString());
-	//	betResultList = betResponse.as(List.class);
 		betResultList = betResponse.jsonPath().getObject("$", List.class);
 		actualNumberOfBets = betResultList.size();
 

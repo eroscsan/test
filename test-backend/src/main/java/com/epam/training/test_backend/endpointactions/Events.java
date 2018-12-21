@@ -29,9 +29,9 @@ public class Events {
 	
 	
 	public static Response getBetsByEventId(String eventId, String sessionId) {
-		logger.info("GET {} {}", LOAD_BETS_ENDPOINT, eventId);
+		logger.info("POST {} {}", LOAD_BETS_ENDPOINT, eventId);
 		//here comes the restAssured solution to get bets
-		return given().contentType(ContentType.JSON)
+		return given()
 				.param("eventId", eventId)
 				.sessionId(sessionId)
 				.post(LOAD_BETS_ENDPOINT)
