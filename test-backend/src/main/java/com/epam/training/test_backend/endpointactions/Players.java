@@ -16,18 +16,6 @@ public class Players {
 	
 	private static final String PLAYERS_ENDPOINT = "players/{id}";
 	private static final String UPDATE_PLAYER_ENDPOINT = "updatePlayer";
-
-	/*
-	private final static String ID = "id";
-	private final static String USERNAME = "userName";
-	private final static String NAME = "name";
-	private final static String ACCOUNTNUMBER = "accountNumber";
-	private final static String DATEOFBIRTH = "dateOfBirth";
-	private final static String BALANCE = "balance";
-	private final static String CURRENCY = "currency";
-	private final static String VERSION = "version";
-	*/
-	
 	
 	public static Response getPlayerById(String id, String sessionId) {
 		logger.info("GET {} {}", PLAYERS_ENDPOINT, id);

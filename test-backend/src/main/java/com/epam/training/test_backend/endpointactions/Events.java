@@ -32,9 +32,9 @@ public class Events {
 		logger.info("GET {} {}", LOAD_BETS_ENDPOINT, eventId);
 		//here comes the restAssured solution to get bets
 		return given().contentType(ContentType.JSON)
-				.pathParam("eventId", eventId)
+				.param("eventId", eventId)
 				.sessionId(sessionId)
-				.get(LOAD_BETS_ENDPOINT)
+				.post(LOAD_BETS_ENDPOINT)
 				.then()
 				.statusCode(200)
 				.extract()

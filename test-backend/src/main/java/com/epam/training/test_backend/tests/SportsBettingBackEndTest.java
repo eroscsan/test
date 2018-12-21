@@ -48,13 +48,11 @@ public class SportsBettingBackEndTest extends BasicTest {
 		// update the player here!
 		try {
 			Players.getPlayerUpdate(player);
-			System.out.println(player.toString());
 		} catch (Exception e) {
 			System.out.println("nok");
 		}
 		
 		Response returnedPlayer = Players.getPlayerById(userId, sessionId);
-		System.out.println(userId);
 
 		// this is an application DB logic here
 		player.setVersion(player.getVersion() + 1);
@@ -62,6 +60,7 @@ public class SportsBettingBackEndTest extends BasicTest {
 		JSONAssert.assertEquals(player.createJSONBodyWithNulls(), returnedPlayer.asString(), true);
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Test
 	public void homeworkTest() {
 		int actualNumberOfBets = 0;
@@ -71,33 +70,18 @@ public class SportsBettingBackEndTest extends BasicTest {
 		
 		// get the event and verify the number of them
 		Response eventResponse  = Events.getEvents(sessionId);
-	//	eventResultList = eventResponse.as(List.class);
 		eventResultList = eventResponse.jsonPath().getObject("$", List.class);
-	//	eventResultList = eventResponse.jsonPath().getList("event", Event.class);
-	//	System.out.println(eventResultList.toString());
-	//	System.out.println(eventResponse.asString());
 		actualNumberOfEvents = eventResultList.size();
 		assertEquals("There must be only one event!", 1, actualNumberOfEvents);
 		
-		
-		/*
-		 * A bet-es részt nem tudtam lefuttatni mert 405-os http error-t kaptam folyamatosan.
-		 * Úgy gondolom ennek ellenére, hogy a lenti lekérdezésnek jónak kellene lennie.
-		 */
-	/*	
 		String id = eventResponse.jsonPath().getString(ID);
 		Response betResponse = Events.getBetsByEventId(id, sessionId);
-	//	System.out.println(betResponse.asString());
+		System.out.println(betResponse.asString());
 	//	betResultList = betResponse.as(List.class);
-		betResultList = betResponse.jsonPath().getList("$", Bet.class);
-	//	betResultList = betResponse.jsonPath().getObject("$", List.class);
-	//	System.out.println(betResultList.toString());
-	//	betResultList = betResponse.jsonPath().getList("id", Integer.class);
+		betResultList = betResponse.jsonPath().getObject("$", List.class);
 		actualNumberOfBets = betResultList.size();
 
-	//	assertEquals("There must be two bets!", 2, actualNumberOfBets);
-	 * 
-	 */
+		assertEquals("There must be two bets!", 2, actualNumberOfBets);
 	}
 	
 }
