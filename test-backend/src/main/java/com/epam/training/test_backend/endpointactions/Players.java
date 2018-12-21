@@ -48,8 +48,7 @@ public class Players {
 				.then()
 				.statusCode(302)
 				.extract()
-				.response();
-				
+				.response();		
 	}
 
 }
